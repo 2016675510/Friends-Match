@@ -1,0 +1,41 @@
+# DataSource Config
+spring:
+  application:
+    name: friends-match
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/friends?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=true
+  #session失效时间
+  session:
+    timeout: 86400
+    store-type: redis
+    redis:
+      flush-mode: on_save
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  redis:
+    port: 6379
+    host: 8.138.93.93
+    database: 0
+  profiles:
+    active: prod   # dev开发环境
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        domain: localhost
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false   # 驼峰转换
+  global-config:
+    db-config:
+      logic-delete-field: isDelete  #逻辑删除数据库实体字段
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

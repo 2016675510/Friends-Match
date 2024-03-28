@@ -1,0 +1,33 @@
+# 线上配置文件
+spring:
+  # DataSource Config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 'jdbc:mysql://8.138.93.93:3306/user?characterEncoding=utf8&useSSL=false'
+    username: user
+    password: root
+  # session 失效时间
+  session:
+    timeout: 86400
+  redis:
+    port: 6379
+    host: 8.138.93.93
+    database: 0
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        domain: 8.138.93.93
+        same-site: lax
+        secure: false
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0

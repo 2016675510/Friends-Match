@@ -1,0 +1,14 @@
+POST http://localhost:8080/api/user/register
+Content-Type: application/json
+
+{
+  "checkPassword": "32313",
+  "userAccount": "32313",
+  "planetCode": "32313",
+  "userPassword": "32313"
+}
+
+###
+GET http://localhost:8080/user/search?username
+
+###
